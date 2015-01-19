@@ -2,15 +2,15 @@
 #include<climits>
 using namespace std;
 
-void merge(int *, int, int, int);
+void conquer(int *, int, int, int);
 
-void mergeSort(int *array, int startIndex, int endIndex){
+void divide(int *array, int startIndex, int endIndex){
 	int middleIndex;
 	if(startIndex < endIndex){
 		middleIndex = (startIndex + endIndex) / 2;
-		mergeSort(array, startIndex, middleIndex);
-		mergeSort(array, middleIndex + 1, endIndex);
-		merge(array, startIndex, middleIndex, endIndex);
+		divide(array, startIndex, middleIndex);
+		divide(array, middleIndex + 1, endIndex);
+		conquer(array, startIndex, middleIndex, endIndex);
 	}
 }
 
@@ -19,12 +19,12 @@ int inversions = 0;
 int main(){
 
 	int array[] = {1, 11, 111, 1111, 11111};
-	mergeSort(array, 0, sizeof(array) / sizeof(int) - 1);
+	divide(array, 0, sizeof(array) / sizeof(int) - 1);
 	
 	cout << inversions;		
 }
 
-void merge(int *array, int startIndex, int middleIndex, int endIndex){
+void conquer(int *array, int startIndex, int middleIndex, int endIndex){
 
 	int leftListLen = middleIndex - startIndex + 1;
 	int rightListLen = endIndex - middleIndex;	 
