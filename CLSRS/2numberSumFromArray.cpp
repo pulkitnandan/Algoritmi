@@ -4,7 +4,7 @@ using namespace std;
 
 bool binarySearchIterative(int *, int, int);
 
-bool sumOf2X(int *array, int arraySize, int sum){
+bool sumOf2Numbers(int *array, int arraySize, int sum){
 	
 	for(int i = 0; i < arraySize; i++){
 		int remainingValue = sum - array[i];
@@ -19,7 +19,7 @@ bool sumOf2X(int *array, int arraySize, int sum){
 int main(){
 	int array[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
 	int sum = 25;
-	sumOf2X(array, sizeof(array) / sizeof(int), sum);	
+	sumOf2Numbers(array, sizeof(array) / sizeof(int), sum);	
 }
 
 bool binarySearchIterative(int *array, int arraySize, int searchNumber){
