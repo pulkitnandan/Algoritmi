@@ -20,11 +20,21 @@ int *findMaximumSubarray(int *array, int low, int high){
 		int *rightSide = findMaximumSubarray(array, mid + 1, high);
 		int *crossSide = findMaxCrossingSubarray(array, low, mid, high);
 		
-		if(leftSide[2] >= rightSide[2] && leftSide[2] >= crossSide[2])
+		if(leftSide[2] >= rightSide[2] && leftSide[2] >= crossSide[2]){
+			delete rightSide;
+			delete crossSide;
 			return leftSide;
-		else if(rightSide[2] >= leftSide[2] && rightSide[2] >= crossSide[2])
+		}
+		else if(rightSide[2] >= leftSide[2] && rightSide[2] >= crossSide[2]){
+			delete leftSide;
+			delete crossSide;
 			return rightSide;
-		else return crossSide;
+		}
+		else {
+			delete leftSide;
+			delete rightSide;
+			return crossSide;
+		}
 	}
 }
 
@@ -34,6 +44,9 @@ int main(){
 	
 	for(int i = 0; i < 3; i++)
 		cout << returnArray[i] << " ";
+	
+	delete returnArray;
+	return 0;
 }
 
 int *findMaxCrossingSubarray(int *array, int low, int mid, int high){
