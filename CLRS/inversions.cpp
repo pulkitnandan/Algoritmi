@@ -5,7 +5,9 @@ using namespace std;
 void conquer(int *, int, int, int);
 
 void divide(int *array, int startIndex, int endIndex){
+	
 	int middleIndex;
+	
 	if(startIndex < endIndex){
 		middleIndex = (startIndex + endIndex) / 2;
 		divide(array, startIndex, middleIndex);
@@ -21,13 +23,16 @@ int main(){
 	int array[] = {1, 11, 111, 1111, 11111};
 	divide(array, 0, sizeof(array) / sizeof(int) - 1);
 	
-	cout << inversions;		
+	cout << inversions;
+
+	return 0;		
 }
 
 void conquer(int *array, int startIndex, int middleIndex, int endIndex){
 
 	int leftListLen = middleIndex - startIndex + 1;
 	int rightListLen = endIndex - middleIndex;	 
+	
 	int *leftList = new int[leftListLen + 1];
 	int *rightList = new int[rightListLen + 1];
 		
@@ -44,4 +49,7 @@ void conquer(int *array, int startIndex, int middleIndex, int endIndex){
 		for(int j = 0; j < rightListLen; j++)
 			if(leftList[i] < rightList[j])
 				inversions++;
+
+	delete[] leftList;
+	delete[] rightList;
 }

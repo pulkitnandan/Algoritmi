@@ -29,6 +29,8 @@ int main(){
 	heapSort(array, 9);
 	for(int i = 0; i < 9; i++)
 		cout << sortedArray[i] << " ";
+	
+	return 0;
 }
 
 int heapExtractMax(int *array, int size){
